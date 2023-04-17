@@ -9,15 +9,29 @@ namespace ConsoleApp
 {
     internal class Program
     {
+        private static readonly int SnakeStateTotal = 3;
+        private const int SnakeState1 = 0;
+        private const int SnakeState2 = 1;
+        private const int SnakeState3 = 2;
+        private static readonly int SnakeMoveCount = 50;
+        private static readonly int SnakeRow = 5;
+        private static readonly int SnakeSleepTime = 1000;
         static void Main(string[] args)
         {
-            Console.Write("메서드 호출1");   //절대값 기준
-            Thread.Sleep(1000); //1000 = 1초
-            Console.SetCursorPosition(5, 5);
-            Console.Write("메서드 호출2");
-            Thread.Sleep(2000);
-            Console.SetCursorPosition(2, 2);
-            Console.Write("메서드 호출3");
+            int x = SnakeState1;
+            while (x < 50) {
+                Console.Clear();
+                Console.SetCursorPosition(x, SnakeMoveCount);
+
+                switch(x% SnakeStateTotal)
+                {
+                    case SnakeState1 : Console.WriteLine("__@"); break;
+                    case SnakeState2 : Console.WriteLine("_^@"); break;
+                    case SnakeState3 : Console.WriteLine("^_@"); break;
+                }
+                Thread.Sleep(SnakeSleepTime);
+                x++;
+            }
         }
     }
 }
